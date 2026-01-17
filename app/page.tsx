@@ -1,5 +1,6 @@
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import projects from './data/projects.json';
+import personal from './data/personal.json';
 
 interface Project {
   name: string;
@@ -30,7 +31,7 @@ export default function Home() {
     <div className="bg-gray-900 text-white min-h-screen font-sans">
       <header className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">J.G.Kiran</h1>
+          <h1 className="text-3xl font-bold">{personal.name}</h1>
           <nav className="flex items-center space-x-4">
             <a href="#projects" className="hover:text-gray-400">Projects</a>
             <a href="#contact" className="hover:text-gray-400">Contact</a>
@@ -40,8 +41,8 @@ export default function Home() {
 
       <main className="container mx-auto px-4">
         <section id="hero" className="text-center py-20">
-          <h2 className="text-5xl font-bold mb-4">Software Engineer</h2>
-          <p className="text-xl text-gray-400 mb-8">Building beautiful and functional web experiences.</p>
+          <h2 className="text-5xl font-bold mb-4">{personal.role}</h2>
+          <p className="text-xl text-gray-400 mb-8">{personal.bio}</p>
           <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full">
             Get in Touch
           </a>
@@ -62,24 +63,21 @@ export default function Home() {
             Feel free to reach out for collaborations or just a friendly chat.
           </p>
           <div className="flex justify-center space-x-6">
-            <a href="mailto:jgkiran@example.com" className="text-gray-400 hover:text-white" aria-label="Email">
+            <a href={`mailto:${personal.email}`} className="text-gray-400 hover:text-white" aria-label="Email">
               <Mail size={32} />
             </a>
-            <a href="https://github.com/jgkiran" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="GitHub">
+            <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="GitHub">
               <Github size={32} />
             </a>
-            <a href="https://linkedin.com/in/jgkiran" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="LinkedIn">
+            <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="LinkedIn">
               <Linkedin size={32} />
-            </a>
-            <a href="https://twitter.com/jgkiran" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="Twitter">
-              <Twitter size={32} />
             </a>
           </div>
         </section>
       </main>
       
       <footer className="text-center py-8">
-        <p className="text-gray-500">&copy; 2026 J.G. Kiran. All rights reserved.</p>
+        <p className="text-gray-500">&copy; 2026 {personal.name}. All rights reserved.</p>
       </footer>
     </div>
   );

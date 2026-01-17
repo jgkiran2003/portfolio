@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import personal from "./data/personal.json";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "J.G.Kiran - Software Engineer",
-  description: "Portfolio of J.G.Kiran, a software engineer building beautiful and functional web experiences.",
+  title: `${personal.name} - ${personal.role}`,
+  description: `Portfolio of ${personal.name}, a software engineer building beautiful and functional web experiences.`,
 };
 
 export default function RootLayout({
