@@ -1,5 +1,5 @@
 import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
-import projects from './projects.json';
+import projects from './data/projects.json';
 
 interface Project {
   name: string;
