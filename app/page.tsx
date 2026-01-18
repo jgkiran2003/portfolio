@@ -1,15 +1,59 @@
+'use client';
 
+import { useRef } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { getRepositories } from './services/github';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import projects from './data/projects.json';
 import personal from './data/personal.json';
-import ProjectList from './components/ProjectList';
 
+interface Project {
+  name: string;
+  description: string | null;
+  html_url: string;
+  language: string;
+  lastUpdated: string;
+}
 
-export default async function Home() {
-  const projects = await getRepositories();
+gsap.registerPlugin(ScrollTrigger);
+
+const ProjectCard = ({ project }: { project: Project }) => (
+  <div className="project-card bg-gray-800 rounded-lg overflow-hidden">
+    <div className="p-6">
+      <h4 className="text-2xl font-bold mb-2">{project.name}</h4>
+      <p className="text-gray-400 mb-4">{project.description || 'No description available.'}</p>
+      <div className="flex justify-between items-center">
+        <a href={project.html_url} className="text-blue-400 hover:text-blue-500">View Project</a>
+        <div className="text-sm text-gray-500">
+          <p>{project.language}</p>
+          <p>Updated: {project.lastUpdated}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export default function Home() {
+  const container = useRef(null);
+
+  useGSAP(() => {
+    gsap.from('.project-card', {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.project-grid',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse',
+      },
+    });
+  }, { scope: container });
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen font-sans">
+    <div ref={container} className="bg-gray-900 text-white min-h-screen font-sans">
       <header className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between">
           <h1 className="text-3xl font-bold">{personal.name}</h1>
@@ -31,7 +75,11 @@ export default async function Home() {
 
         <section id="projects" className="py-20">
           <h3 className="text-4xl font-bold text-center mb-12">Projects</h3>
-          <ProjectList projects={projects} />
+          <div className="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {(projects as Project[]).map((project) => (
+              <ProjectCard key={project.name} project={project} />
+            ))}
+          </div>
         </section>
 
         <section id="contact" className="py-20 text-center">
