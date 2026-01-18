@@ -1,32 +1,13 @@
+
 import { Github, Linkedin, Mail } from 'lucide-react';
-import projects from './data/projects.json';
+import { getRepositories } from './services/github';
 import personal from './data/personal.json';
+import ProjectList from './components/ProjectList';
 
-interface Project {
-  name: string;
-  description: string | null;
-  html_url: string;
-  language: string;
-  lastUpdated: string;
-}
 
-const ProjectCard = ({ project }: { project: Project }) => (
-  <div className="bg-gray-800 rounded-lg overflow-hidden">
-    <div className="p-6">
-      <h4 className="text-2xl font-bold mb-2">{project.name}</h4>
-      <p className="text-gray-400 mb-4">{project.description || 'No description available.'}</p>
-      <div className="flex justify-between items-center">
-        <a href={project.html_url} className="text-blue-400 hover:text-blue-500">View Project</a>
-        <div className="text-sm text-gray-500">
-          <p>{project.language}</p>
-          <p>Updated: {project.lastUpdated}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+export default async function Home() {
+  const projects = await getRepositories();
 
-export default function Home() {
   return (
     <div className="bg-gray-900 text-white min-h-screen font-sans">
       <header className="container mx-auto px-4 py-8">
@@ -50,11 +31,7 @@ export default function Home() {
 
         <section id="projects" className="py-20">
           <h3 className="text-4xl font-bold text-center mb-12">Projects</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(projects as Project[]).map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
-          </div>
+          <ProjectList projects={projects} />
         </section>
 
         <section id="contact" className="py-20 text-center">
