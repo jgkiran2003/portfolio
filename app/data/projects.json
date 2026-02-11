@@ -18,14 +18,8 @@
     "html_url": "https://github.com/jgkiran2003/SurveyLens"
   },
   {
-    "name": "Digital PA System",
-    "description": null,
-    "language": "JavaScript Other",
-    "html_url": "https://github.com/jgkiran2003/digital-pa-system"
-  },
-  {
     "name": "Finance",
-    "description": null,
+    "description": "A real-time investment simulation tool that lets you build and track a virtual stock portfolio using live market data to analyze performance and test trading strategies without risking real capital.",
     "language": "HTML",
     "html_url": "https://github.com/jgkiran2003/finance"
   }
