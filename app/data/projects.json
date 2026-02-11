@@ -1,15 +1,21 @@
 [
   {
     "name": "Physics Engine",
-    "description": "Simple physics engine in C++",
+    "description": "A 3D rigid-body physics engine developed from scratch, focusing on low-level memory management and stable impulse-based collision resolution.",
     "language": "C++",
     "html_url": "https://github.com/jgkiran2003/PhysicsEngine"
   },
   {
     "name": "FinNews",
-    "description": null,
-    "language": "Python",
+    "description": "News analysis and impact prediction system using a fine-tuned FinBERT Transformer model, modular data ingestion pipelines, and SQLite for data integrity.",
+    "language": "Python, PyTorch, Hugging Face, SQLite",
     "html_url": "https://github.com/jgkiran2003/FinNews"
+  },
+  {
+    "name": "SurveyLens",
+    "description": "AI-driven survey analyzer with a dynamic FastAPI backend orchestrating statistical workflows and an AI Orchestrator using the Gemini API for data profiling and summary generation.",
+    "language": "Python, FastAPI, Pydantic, Gemini API",
+    "html_url": "https://github.com/jgkiran2003/SurveyLens"
   },
   {
     "name": "Digital PA System",

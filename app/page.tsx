@@ -13,7 +13,6 @@ interface Project {
   description: string | null;
   html_url: string;
   language: string;
-  lastUpdated: string;
 }
 
 gsap.registerPlugin(ScrollTrigger);
@@ -27,7 +26,6 @@ const ProjectCard = ({ project }: { project: Project }) => (
         <a href={project.html_url} className="text-blue-400 hover:text-blue-500">View Project</a>
         <div className="text-sm text-gray-500">
           <p>{project.language}</p>
-          <p>Updated: {project.lastUpdated}</p>
         </div>
       </div>
     </div>
