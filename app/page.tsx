@@ -7,6 +7,8 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import projects from './data/projects.json';
 import personal from './data/personal.json';
+import { ProjectBentoGrid } from '../components/ProjectBentoGrid';
+import { TechMarquee } from '../components/TechMarquee';
 
 interface Project {
   name: string;
@@ -17,34 +19,20 @@ interface Project {
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectCard = ({ project }: { project: Project }) => (
-  <div className="project-card bg-gray-800 rounded-lg overflow-hidden">
-    <div className="p-6">
-      <h4 className="text-2xl font-bold mb-2">{project.name}</h4>
-      <p className="text-gray-400 mb-4">{project.description || 'No description available.'}</p>
-      <div className="flex justify-between items-center">
-        <a href={project.html_url} className="text-blue-400 hover:text-blue-500">View Project</a>
-        <div className="text-sm text-gray-500">
-          <p>{project.language}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
 export default function Home() {
   const container = useRef(null);
 
   useGSAP(() => {
+    // Animation for project cards
     gsap.from('.project-card', {
-      y: 50,
+      y: 30,
       opacity: 0,
-      duration: 1,
-      stagger: 0.2,
+      duration: 0.8,
+      stagger: 0.1,
       ease: 'power3.out',
       scrollTrigger: {
         trigger: '.project-grid',
-        start: 'top 80%',
+        start: 'top 85%',
         toggleActions: 'play none none reverse',
       },
     });
@@ -54,53 +42,69 @@ export default function Home() {
     <div ref={container} className="bg-gray-900 text-white min-h-screen font-sans">
       <header className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">{personal.name}</h1>
-          <nav className="flex items-center space-x-4">
-            <a href="#projects" className="hover:text-gray-400">Projects</a>
-            <a href="#contact" className="hover:text-gray-400">Contact</a>
+          <h1 className="text-3xl font-bold tracking-tight">{personal.name}</h1>
+          <nav className="hidden md:flex items-center space-x-6">
+            <a href="#projects" className="text-zinc-400 hover:text-white transition-colors">Projects</a>
+            <a href="#contact" className="text-zinc-400 hover:text-white transition-colors">Contact</a>
           </nav>
         </div>
       </header>
 
-      <main className="container mx-auto px-4">
-        <section id="hero" className="text-center py-20">
-          <h2 className="text-5xl font-bold mb-4">{personal.role}</h2>
-          <p className="text-xl text-gray-400 mb-8">{personal.bio}</p>
-          <a href="#contact" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full">
+      <main>
+        {/* Hero Section */}
+        <section id="hero" className="container mx-auto px-4 text-center py-24 md:py-40">
+          <h2 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
+            {personal.role}
+          </h2>
+          <p className="text-xl md:text-2xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            {personal.bio}
+          </p>
+          <a href="#contact" className="inline-block bg-white text-black font-bold py-4 px-10 rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10">
             Get in Touch
           </a>
         </section>
 
-        <section id="projects" className="py-20">
-          <h3 className="text-4xl font-bold text-center mb-12">Projects</h3>
-          <div className="project-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(projects as Project[]).map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
+        {/* Tech Marquee Section */}
+        <div className="py-12 md:py-20 overflow-hidden">
+          <h3 className="text-center text-zinc-500 uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-8">Selected Tech Stack</h3>
+          <TechMarquee />
+        </div>
+
+        {/* Projects Section */}
+        <section id="projects" className="container mx-auto px-4 py-20 md:py-28">
+          <div className="mb-12">
+            <h3 className="text-3xl md:text-5xl font-bold mb-4">Selected Work</h3>
+            <p className="text-zinc-400 text-base md:text-lg">Engineering solutions for complexity, scale, and performance.</p>
+          </div>
+          <div className="project-grid">
+            <ProjectBentoGrid projects={projects as Project[]} />
           </div>
         </section>
 
-        <section id="contact" className="py-20 text-center">
-          <h3 className="text-4xl font-bold mb-8">Contact</h3>
-          <p className="text-xl text-gray-400 mb-8">
-            Feel free to reach out for collaborations or just a friendly chat.
-          </p>
-          <div className="flex justify-center space-x-6">
-            <a href={`mailto:${personal.email}`} className="text-gray-400 hover:text-white" aria-label="Email">
-              <Mail size={32} />
-            </a>
-            <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="GitHub">
-              <Github size={32} />
-            </a>
-            <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white" aria-label="LinkedIn">
-              <Linkedin size={32} />
-            </a>
+        {/* Contact Section */}
+        <section id="contact" className="container mx-auto px-4 py-28 md:py-40 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-4xl md:text-6xl font-bold mb-6">Let's build something exceptional.</h3>
+            <p className="text-lg md:text-xl text-zinc-400 mb-10">
+              Open to ambitious collaborations in low-level systems and AI infrastructure.
+            </p>
+            <div className="flex justify-center space-x-6">
+              <a href={`mailto:${personal.email}`} className="p-4 bg-zinc-900 border border-white/5 rounded-2xl text-zinc-400 hover:text-white hover:border-blue-500/30 hover:-translate-y-1 transition-all" aria-label="Email">
+                <Mail size={28} />
+              </a>
+              <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" className="p-4 bg-zinc-900 border border-white/5 rounded-2xl text-zinc-400 hover:text-white hover:border-blue-500/30 hover:-translate-y-1 transition-all" aria-label="GitHub">
+                <Github size={28} />
+              </a>
+              <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" className="p-4 bg-zinc-900 border border-white/5 rounded-2xl text-zinc-400 hover:text-white hover:border-blue-500/30 hover:-translate-y-1 transition-all" aria-label="LinkedIn">
+                <Linkedin size={28} />
+              </a>
+            </div>
           </div>
         </section>
       </main>
       
-      <footer className="text-center py-8">
-        <p className="text-gray-500">&copy; 2026 {personal.name}. All rights reserved.</p>
+      <footer className="container mx-auto px-4 py-12 text-center border-t border-white/5">
+        <p className="text-zinc-500 text-sm">&copy; 2026 {personal.name} • Built with Next.js 16 & GSAP</p>
       </footer>
     </div>
   );
