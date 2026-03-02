@@ -1,4 +1,4 @@
-import { Github, Code2, ExternalLink } from 'lucide-react';
+import { Github, Code2 } from 'lucide-react';
 
 interface Project {
   name: string;
@@ -8,17 +8,16 @@ interface Project {
 }
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  // Ensure we have languages even if the string is messy
   const languages = project.language ? project.language.split(',').map(l => l.trim()) : [];
 
   return (
-    <div className="project-card group relative flex flex-col h-full bg-zinc-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.3)]">
-      <div className="relative z-10 flex flex-col h-full">
+    <div className="bg-zinc-900/50 border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:-translate-y-2 hover:border-blue-500/40 hover:shadow-blue-500/50 hover:shadow-[0_0_40px_-10px]">
+      <div className="z-10 flex flex-col h-full">
         <div className="flex justify-between items-start mb-6">
-          <div className="p-3 bg-blue-500/10 rounded-2xl border border-blue-500/20">
+          <div className="p-2.5 bg-blue-500/10 rounded-2xl border border-blue-500/20">
             <Code2 size={24} className="text-blue-400" />
           </div>
-          <div className="flex gap-3">
+          <div className="flex">
             <a 
               href={project.html_url} 
               target="_blank" 
@@ -26,7 +25,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               className="p-2.5 bg-white/5 rounded-full hover:bg-white/15 transition-all hover:scale-110 active:scale-95"
               aria-label={`View ${project.name} on GitHub`}
             >
-              <Github size={20} className="text-zinc-400 group-hover:text-white" />
+              <Github size={25} className="text-zinc-400" />
             </a>
           </div>
         </div>
@@ -40,19 +39,17 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </p>
         </div>
         
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-wrap gap-2">
+        <div className="mt-6 pt-6 border-t border-white/5 flex flex-wrap gap-2">
           {languages.map((lang, i) => (
             <span 
               key={`${project.name}-${lang}-${i}`} 
-              className="px-3 py-1 bg-zinc-800/50 border border-white/5 rounded-lg text-[10px] md:text-xs font-semibold text-zinc-300 backdrop-blur-md group-hover:border-blue-500/30 transition-colors"
+              className="p-2 bg-zinc-800/50 border border-white/5 rounded-lg text-[10px] md:text-xs font-semibold text-zinc-300 backdrop-blur-md group-hover:border-blue-500/30 transition-colors"
             >
               {lang}
             </span>
           ))}
         </div>
       </div>
-
-      <div className="absolute inset-0 border-2 border-transparent group-hover:border-blue-500/20 rounded-3xl transition-colors duration-500 pointer-events-none" />
     </div>
   );
 };

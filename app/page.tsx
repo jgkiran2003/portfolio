@@ -2,14 +2,10 @@
 
 import { useRef } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import projects from './data/projects.json';
 import personal from './data/personal.json';
 import { motion } from 'framer-motion';
 import { ProjectBentoGrid } from '../components/ProjectBentoGrid';
-import { TechMarquee } from '../components/TechMarquee';
 import { Navbar } from '../components/Navbar';
 
 interface Project {
@@ -19,26 +15,8 @@ interface Project {
   language: string;
 }
 
-gsap.registerPlugin(ScrollTrigger);
-
 export default function Home() {
   const container = useRef(null);
-
-  useGSAP(() => {
-    // Animation for project cards
-    gsap.from('.project-card', {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.project-grid',
-        start: 'top 85%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-  }, { scope: container });
 
   return (
     <div ref={container} className="bg-gray-900 text-white min-h-screen font-sans selection:bg-blue-500/30">
@@ -46,19 +24,19 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section id="hero" className="container mx-auto px-4 text-center py-32 md:py-48 lg:py-60">
+        <section id="hero" className="container h-screen mx-auto px-8 flex items-center justify-center text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 1.0, ease: "easeOut" }}
           >
-            <h2 className="text-5xl md:text-8xl font-bold mb-8 tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
+            <h2 className="text-7xl sm:text-8xl pb-4 font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
               {personal.role}
             </h2>
-            <p className="text-xl md:text-2xl text-zinc-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-zinc-400 p-4 max-w-2xl mx-auto leading-relaxed">
               {personal.bio}
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col pt-4 sm:flex-row items-center justify-center gap-4">
               <a href="#projects" className="bg-white text-black font-bold py-4 px-10 rounded-full hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10">
                 View My Work
               </a>
@@ -69,14 +47,8 @@ export default function Home() {
           </motion.div>
         </section>
 
-        {/* Tech Marquee Section */}
-        <div className="py-20 overflow-hidden">
-          <h3 className="text-center text-zinc-500 uppercase tracking-[0.3em] text-[10px] md:text-xs font-semibold mb-10">Engineering Excellence</h3>
-          <TechMarquee />
-        </div>
-
         {/* Projects Section */}
-        <section id="projects" className="container mx-auto px-4 py-24 md:py-32">
+        <section id="projects" className="container mx-auto px-4">
           <div className="mb-14">
             <h3 className="text-4xl md:text-6xl font-bold mb-4">Selected Work</h3>
             <p className="text-zinc-400 text-lg md:text-xl">Architecting high-performance systems and AI-driven solutions.</p>
@@ -109,7 +81,7 @@ export default function Home() {
       </main>
       
       <footer className="container mx-auto px-4 py-16 text-center border-t border-white/5">
-        <p className="text-zinc-500 font-medium tracking-wide">&copy; 2026 {personal.name} • Built with Next.js 16, Framer Motion & GSAP</p>
+        <p className="text-zinc-500 font-medium tracking-wide">&copy; 2026 {personal.name} • Built with Next.js 16 & Framer Motion</p>
       </footer>
     </div>
   );
