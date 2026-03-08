@@ -5,6 +5,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import projects from './data/projects.json';
 import personal from './data/personal.json';
 import { motion } from 'framer-motion';
+import Typewriter from '../components/Typewriter';
 import { ProjectBentoGrid } from '../components/ProjectBentoGrid';
 import { Navbar } from '../components/Navbar';
 
@@ -31,7 +32,7 @@ export default function Home() {
             transition={{ duration: 1.0, ease: "easeOut" }}
           >
             <h2 className="text-7xl sm:text-8xl pb-4 font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-500">
-              {personal.role}
+              <Typewriter texts={["Software Engineer", "Systems Architect", "AI Developer"]} />
             </h2>
             <p className="text-xl sm:text-2xl text-zinc-400 p-4 max-w-2xl mx-auto leading-relaxed">
               {personal.bio}
