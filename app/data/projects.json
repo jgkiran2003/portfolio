@@ -3,7 +3,7 @@
     "name": "MindPalace",
     "description": "Architected a local-first RAG pipeline using LanceDB and Ollama with a custom AST chunking algorithm and a state-managed incremental indexer",
     "language": "Python, LanceDB, Ollama, RAG",
-    "html_url": "https://github.com/jgkiran2003/MindPalace"
+    "html_url": "https://github.com/ayirus05/MindPalace"
   },
   {
     "name": "Physics Engine",
