@@ -45,8 +45,7 @@ export const Contact = () => {
               Let&apos;s build something <span className="text-accent">exceptional.</span>
             </h3>
             <p className="text-[17px] text-tx-muted leading-[1.8] mb-10">
-              I&apos;m currently open to new opportunities - part-time roles, interesting freelance projects,
-              or anything technically challenging. If you have a problem worth solving, let&apos;s talk.
+              I am currently seeking software engineering internships and full-time roles. If you are building high-performance systems or AI-driven infrastructure, let&apos;s talk.
             </p>
 
             <div className="flex flex-col gap-4">

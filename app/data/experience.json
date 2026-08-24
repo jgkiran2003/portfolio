@@ -1,0 +1,21 @@
+[
+  {
+    "company": "Razer",
+    "title": "Software Engineering Intern",
+    "period": "May 2026 - Present",
+    "entries": [
+      "Managed production of MemPalace, resolving architectural tickets",
+      "Engineered the MemEval pipeline via Bitbucket CI/CD and AWS S3",
+      "Implemented comprehensive telemetry for latency, token usage, and LLM cost tracking"
+    ]
+  },
+  {
+    "company": "MyStorage",
+    "title": "Software Engineering Intern",
+    "period": "May 2024 - Jul 2024",
+    "entries": [
+      "Architected AI Sales Assistant App reducing response time by 30%",
+      "Engineered a barcode-integrated Warehouse App saving 0.5 minutes per movement"
+    ]
+  }
+]

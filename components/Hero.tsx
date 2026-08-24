@@ -48,9 +48,9 @@ export const Hero = () => {
     <section id="hero" className="h-screen flex">
       <div className="max-w-275 flex items-center justify-center mx-auto lg:justify-between gap-16">
         {/* Left Column */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="space-y-6"
         >
@@ -68,9 +68,9 @@ export const Hero = () => {
           </p>
 
           <p className="text-[15px] text-tx-muted leading-[1.8] max-w-150">
-            Full-stack engineer with a focus on building fast, reliable, and
-            maintainable systems - from database schema to UI interaction. I write clean code, 
-            obsess over performance, and care about the engineering behind every product decision.
+            Software Engineer specializing in AI orchestration, local-first backend architectures,
+            and high-performance system design. I am a Computer Science student at the National
+            University of Singapore specializing in Artificial Intelligence.
           </p>
 
           <div className="flex flex-wrap items-center gap-6 font-mono text-[11px] text-tx-dark">
@@ -95,10 +95,10 @@ export const Hero = () => {
         </motion.div>
 
         {/* Right Column */}
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
-          transition={{ duration: 0.6, delay: 0.2 }} 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="relative hidden lg:block w-[320px] shrink-0"
         >
           <div className="aspect-3/4 rounded-[10px] overflow-hidden border border-border-hi bg-bg-card relative">

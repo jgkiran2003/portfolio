@@ -1,26 +1,20 @@
 [
   {
+    "name": "MindPalace",
+    "description": "Architected a local-first RAG pipeline using LanceDB and Ollama with a custom AST chunking algorithm and a state-managed incremental indexer",
+    "language": "Python, LanceDB, Ollama, RAG",
+    "html_url": "https://github.com/jgkiran2003/MindPalace"
+  },
+  {
     "name": "Physics Engine",
-    "description": "A 3D rigid-body physics engine developed from scratch, focusing on low-level memory management and stable impulse-based collision resolution.",
+    "description": "A 3D rigid-body physics engine developed from scratch, featuring a polymorphic collision system using double-dispatch for stable impulse-based resolution and low-level memory management.",
     "language": "C++",
     "html_url": "https://github.com/jgkiran2003/PhysicsEngine"
   },
   {
     "name": "FinNews",
-    "description": "News analysis and impact prediction system using a fine-tuned FinBERT Transformer model, modular data ingestion pipelines, and SQLite for data integrity.",
+    "description": "News analysis and impact prediction system using the Adapter design pattern for modular data ingestion pipelines and a fine-tuned PyTorch Transformer model for sentiment analysis.",
     "language": "Python, PyTorch, Hugging Face, SQLite",
     "html_url": "https://github.com/jgkiran2003/FinNews"
-  },
-  {
-    "name": "SurveyLens",
-    "description": "AI-driven survey analyzer with a dynamic FastAPI backend orchestrating statistical workflows and an AI Orchestrator using the Gemini API for data profiling and summary generation.",
-    "language": "Python, FastAPI, Pydantic, Gemini API",
-    "html_url": "https://github.com/jgkiran2003/SurveyLens"
-  },
-  {
-    "name": "Finance",
-    "description": "A real-time investment simulation tool that lets you build and track a virtual stock portfolio using live market data to analyze performance and test trading strategies without risking real capital.",
-    "language": "HTML",
-    "html_url": "https://github.com/jgkiran2003/finance"
   }
 ]
